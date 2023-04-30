@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
+
+    <title>ESF Funds</title>
+  </head>
+
+  <body>
+    <header>
+
+    {% include 'navbar.html' %} 
+      {% if messages %}
+        <ul class="messages">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% block content %}
+    
+    {% endblock content %}
+  
+    {% comment %} <script src="{% static 'js/script.js' %}"></script> {% endcomment %}
+  </body>
+</html>
+
+
+
+
+
+
+
+{% comment %} <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'styles\style.css' %}"/>
+    <title>ESF Funds</title>
+  </head> 
+    
+     {% comment %} <div>
+        <div>
+            {% if user.is_superuser %} 
+            <h3><a href="{% url 'create-loan' %}">Create Loan</a></h3>
+            <h3><a href="{% url 'create-transaction' %}">Create Transactions</a></h3>
+            <br>
+             <h5>Welcome Abid</h5> 
+             <ul> 
+                
+                {% for x in loan %}
+
+                    <a href="{% url 'update-loan' x.loan_id %}">Edit</a>
+                    <a href="{% url 'delete-loan' x.loan_id %}">Delete</a>
+                    
+                        <li>{{ x.user_id }}</li>
+                        <li>{{ x.amount }}</li>
+                        <li>{{ x.created_loan }}</li>
+                        <hr>
+                        <br>
+                        {% empty %}
+                        <li><h4>No Loans to show!<h4></li>
+                            
+                {% endfor %}
+             </ul>
+                {% else %}
+                <h1>Welcome {{ request.user.username }}</h1>
+                <strong>Your Activity:</strong>
+                <br>
+                <br>
+                {% for x in loan%}
+                    <ul>
+                        {% comment %} <li>{{ x.user_id }}</li> {% endcomment %}
+                        {% comment %} <li>Loan Amount--{{ x.amount }}</li>
+                        <li>Loan was taken on--{{ x.created_loan }}</li>
+                        <br>
+                        <hr>
+                        {% empty %}
+                        <li><h4>You don't have any active loans.<h4></li>
+                    </ul>
+                    <hr>
+                {% endfor %}
+            {% endif %}    
+    </div>
+</div>  {% endcomment %}
+
+
+
+

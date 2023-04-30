@@ -1,0 +1,125 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+
+<div class="main">
+
+    <div class="header">
+        <h1 class="head-text">Loans</h1>
+    </div>
+
+    <div class="content">
+      {% if user.is_superuser %}
+          {% comment %} <h2>Welcome Abid</h2> {% endcomment %}
+          <a href="{% url 'create-loan' %}"><button class="create-button">Create Loan</button></a>
+                 
+          {% else %}
+  
+          {% comment %} <h2>Welcome {{ request.user.username }}</h2> {% endcomment %}
+  
+      {% endif %}
+  </div>
+  
+
+
+  <div class="card_container">
+      <div class="card" style="border: 2px solid #ffffff; background-color: #a64dff; box-shadow: 5px 10px 10px #6b00b3;">
+        <div class="card-body" style="color: #ffffff">
+          {% if user.is_superuser %}
+          {% comment %} <h1>Loan Details for {{ user.username }}</h1> {% endcomment %}
+          <h4 class="card-title">Here are all the Loans</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Loan starting date</th>
+                <th>Loan Repayment</th>
+                <th>Update</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in loan %}
+            <tr>
+                <td style="color: #ffffff">
+                    {{x.id}}
+                  </td>
+              <td style=" color: #ffffff">
+                {{x.user}}
+              </td>
+              <td style=" color: #ffffff">
+                {{ x.amount }}
+              </td >
+              <td style=" color: #ffffff">
+                {{ x.created_loan | date:"d-M-Y" }}
+              </td>
+              <td>
+                <a class="btn btn-success" href="{% url 'repay_loan' loan_id=x.id %}">Loan repayment</a>
+              </td>
+              <td>
+                <a href="{% url 'update-loan' pk=x.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete-loan' pk=x.pk %}" class="btn btn-danger">Delete</a>
+              </td>
+            
+              {% empty %}
+              <td colspan="5" style="color: white; text-align: center;">
+                <h4>No Loans to show!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+          {% else %}
+
+          <h1>Loan Details for {{ user.username }}</h1>
+          <h4 class="card-title">Here are all your Loans</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Loan starting date</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in loan %}
+            <tr>
+                <td style="color: #ffffff">
+                    {{ x.id }}
+                  </td>
+              <td style=" color: #ffffff">
+                {{ x.user }}
+              </td>
+              <td style=" color: #ffffff">
+                {{ x.amount }}
+              </td >
+              <td style=" color: #ffffff">
+                {{ x.created_loan | date:"d-M-Y" }}
+              </td>
+
+              {% empty %}
+              <td colspan="4" style="color: white; text-align: center;">
+                <h4>You don't have any active loans!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          {% endif %}
+           
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}

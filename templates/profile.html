@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="main">
+    <div class="header">
+        <h1 class="head-text">Profile</h1>
+    </div>
+    
+        {% if user.is_superuser %}
+            {% comment %} <h2>Welcome Abid</h2> {% endcomment %}
+            <a href="{% url 'admin-profile' %}"><button class="create-button">View Your Profile</button></a>
+            <div class="profiles">
+                {% for x in profile %}
+                <div class="profile" style="background-color: #1a292f">
+                    <div class="profle-header" style="padding: 20px">
+                        <center><img src="/static/images/Profile-Icon.svg" alt="Profile Icon">
+                        <h3>{{ x.first_name }} {{ x.last_name }}</h3></center>
+                    </div>
+                    <div class="profle-body" style="padding: 20px">
+                        <p>Username: {{ x.user_id }}</p>
+                        <p>Full Name: {{ x.first_name }} {{ x.last_name }}</p>
+                        <p>Email: {{ x.email }}</p>
+                        <p>Date of Birth: {{ x.dob }}</p>
+                        <p>Created on: {{ x.created }}</p>
+                        <p>Last Updated: {{ x.updated }}</p>
+
+                        <br>
+                        <a class="btn btn-primary" href="{% url 'update-profile' %}">Edit</a>
+                    </div>
+                </div>
+                    
+                    {% empty %}
+                    <h4>No Profiles to show!<h4>
+                    
+                            
+                {% endfor %}
+
+            </div>
+             
+             
+            {% else %}
+                
+                {% comment %} <h2>Welcome {{ request.user.username }}</h2>
+                <p>Here is your data:</p> {% endcomment %}
+                <div class="profiles">
+                {% for x in profile  %}
+                    <div class="profile">
+                        <div class="profle-header">
+                            <center><img src="/static/images/Profile-Icon.svg" alt="Profile Icon"/> 
+                            <h3>{{ x.first_name }} {{ x.last_name }}</h3></center>
+                        </div>
+                        <div class="profle-body">
+                            <p>Username: {{ x.user_id }}</p>
+                            <p>Full Name: {{ x.first_name }} {{ x.last_name }}</p>
+                            <p>Email: {{ x.email }}</p>
+                            <p>Date of Birth: {{ x.dob }}</p>
+                            <p>Created on: {{ x.created }}</p>
+                            <p>Last Updated: {{ x.updated }}</p>
+                        
+                            <br>
+                            <a class="btn btn-primary" href="{% url 'update-profile' %}">Edit</a>
+                        </div>
+                    </div>
+                        
+                        {% empty %}
+                        <h4>You haven't created your profile yet.</h4>
+                
+                {% endfor %}
+                </div>
+
+        {% endif %}
+
+</div>
+
+
+
+
+
+
+
+
+{% comment %} <div class="home-container">
+    <h3> Dashboard </h3>
+    <hr>
+    
+    <div>
+
+        
+        <div>
+            {% if user.is_superuser %} 
+            <h3><a href="{% url 'create-profile' %}">Create profile</a></h3>
+            <br>
+             <h5>Welcome Abid</h5> 
+             <ul> 
+                
+                {% for x in profile  %}
+                    <h1>Welcome {{ request.user.username }}</h1>
+                    <p>Here is your data:</p>
+                    <ul>
+                        <a href="{% url 'update-profile' %}">Edit</a>
+                        <li>Username {{ x.user_id }}</li>
+                        <img src="{{x.image.url}}" alt="My image" width = "100px"  height="100">
+                        <li>First name--{{ x.first_name }}</li>
+                        <li>Last name--{{ x.last_name }}</li>
+                        <li> Date of Birth---{{x.dob}} </li>
+                        {% empty %}
+                        <li><h4>You haven't created your profile yet.<h4></li>
+                    </ul>
+                    <hr>
+                {% endfor %}
+    </div>
+</div> {% endcomment %}
+
+
+
+{% endblock content %}

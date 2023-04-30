@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+{% comment %} <div class="main">
+    <form class="edit-form" method="POST" action="">
+        <h1>You are Creating Loan: </h1>
+        {% csrf_token %}
+        {{form}}
+        <input type="SUBMIT" value="Submit">
+    </form>
+</div> {% endcomment %}
+
+
+
+
+<div class="create-main">
+
+    <form class="edit-form" method="POST" action="">
+        <h1>Create Loan</h1>
+        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
+            <label for="{{ form.user.id_for_label }}">User</label>
+            {{ form.user }}
+            <label for="{{ form.amount.id_for_label }}">Amount:</label>
+            {{ form.amount }}
+            <label for="{{ form.interest_rate.id_for_label }}">Interest Rate:</label>
+            {{ form.interest_rate }}
+            <label for="{{ form.term.id_for_label }}">Term:</label>
+            {{ form.term }}
+            {% comment %} <label for="{{ form.remaining_balance.id_for_label }}">Remaining Balance</label> {% endcomment %}
+            {% comment %} {{ form.remaining_balance }} {% endcomment %}
+            {% comment %} <label for="{{ form.balance.id_for_label }}">Amount Paid for the current loan</label> {% endcomment %}
+            {% comment %} {{ form.balance }} {% endcomment %}
+            <label for="{{ form.status.id_for_label }}">Status:</label>
+            {{ form.status }}
+            <button type="submit">Create Loan</button>
+    </form>
+</div>
+
+{% endblock content %}

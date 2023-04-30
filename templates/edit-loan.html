@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="edit-main">
+    <form class="edit-form" method="POST" action="">
+        <h2>You are Editing Loan for: {{ form.user }}</h2>
+        {% csrf_token %}
+            <label for="{{ form.user.id_for_label }}">User</label>
+            {{ form.user }}
+            <label for="{{ form.amount.id_for_label }}">Amount:</label>
+            {{ form.amount }}
+            <label for="{{ form.interest_rate.id_for_label }}">Interest Rate:</label>
+            {{ form.interest_rate }}
+            <label for="{{ form.term.id_for_label }}">Term:</label>
+            {{ form.term }}
+            <label for="{{ form.remaining_balance.id_for_label }}">Remaining Balance</label>
+            {% if disabled %}
+                <input type="number" name="remaining_balance" value="{{ loan.remaining_balance }}" disabled>
+            {% else %}
+                {{ form.remaining_balance }}
+            {% endif %}
+            <label for="{{ form.balance.id_for_label }}">Amount Paid for the current loan</label>
+            {% if disabled %}
+                <input type="number" name="balance" value="{{ loan.balance }}" disabled>
+            {% else %}
+                {{ form.balance }}
+            {% endif %}
+            <label for="{{ form.status.id_for_label }}">Status:</label>
+            {{ form.status }}
+            <input type="submit" value="Update Loan" {% if disabled %} disabled {% endif %}>
+            {% if disabled %}
+                <p>This loan is already paid and cannot be edited.</p>
+            {% endif %}
+        </form>
+</div>
+
+{% endblock content %}

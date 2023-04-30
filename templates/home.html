@@ -1,0 +1,96 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<div class="home">
+
+  <div class="home_main">
+      <span>
+          <h3 class="greetings"> Welcome {{ user.username }}, </h3>
+          <bold style="font-size:30px"> We hope you're taking care of yourself and feeling good today. </bold>
+      </span>
+      <span>
+          <img class="home_main_image" src="/static/images/500rs.png"/>
+      </span>
+      
+  </div>
+  <div class="activity">
+      <a href="#row">Your Activity >></a>
+  </div>
+  
+  <div class="row" id="row" style="padding-left: 10px; padding-bottom: 20px; margin-right: 0px;">
+      <div class="col-sm-6">
+        <div class="card" style="border: 2px solid #ffffff; background-color: #a64dff; box-shadow: 5px 10px 10px #6b00b3;">
+          <div class="card-body" style="color: #ffffff">
+            <h5 class="card-title">Recent Loans</h5>
+            <h1>Loan Details for {{ Loan.user }}</h1>
+            <table class="table table-striped">
+              <thead>
+              <tr style="color: #ffffff">
+                <th>Name</th>
+                <th>Amount </th>
+                <th>Loan Starting Date </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for x in loan %}
+              <tr>
+                <td style="color: #ffffff">
+                  {{x.user}}
+                </td>
+                <td style="color: #ffffff">
+                  {{ x.amount }}
+                </td >
+                <td style="color: #ffffff">
+                  {{ x.created_loan | date:"d-M-Y" }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+             
+            <a href="{% url 'loan-details' %}" class="btn btn-danger">More Loan Info</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card" style="border: 2px solid #ffffff; background-color: #00ff99; box-shadow: 5px 10px 10px #008000;">
+          <div class="card-body">
+            <h5 class="card-title">Recent Transactions</h5>
+            <h1>Transaction Details for {{ user.username }}</h1>
+            <table class="table table-striped">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for x in transaction %}
+              <tr>
+                <td>
+                  {{ x.loan.user }}
+                </td>
+                <td>
+                  {{ x.transaction_amount }}
+                </td>
+                <td>
+                  {{ x.transaction_time|date:"d-M-Y" }}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            </table>
+            <a href="{% url 'transactions' %}" class="btn btn-danger">More Transaction Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+

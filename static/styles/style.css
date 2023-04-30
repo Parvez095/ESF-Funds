@@ -1,0 +1,327 @@
+*{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+p{
+    font-size: 20px;
+}
+
+
+
+/* style for login and register */
+
+.div_container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+.div_container_image{
+    position: absolute;
+    width: 100%;
+    opacity: 0.6;
+}
+
+.login_register{
+    margin: 0px auto;
+    width: 35vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #ffffff;
+    border-radius: 10px;
+    background-color: #635985;
+    position: relative;
+    box-shadow: 5px 10px 18px #000000;
+    top: 80px;
+    z-index: 9;
+}
+
+.lr-head-text{
+    margin-bottom: 20px;
+    display: flex;
+    color: white;
+    height: 100%;
+    width: 100%;
+    /* font-family: 'Merriweather', serif; */
+    font-family: 'Alkatra', cursive;
+    height: 45px;
+    justify-content: center;
+    background-color: #393053;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.login_register_content{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_register_form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border-radius: 10px;
+}
+.login_register_form label{
+    font-weight: 700;
+}
+.login_register_form input{
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.login_register_form input[type=Submit]{
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.buttons{
+    padding: 7px 10px;
+    border-radius: 8px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.text{
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+
+/* style for home page */
+
+.home{
+    box-sizing: border-box;
+}
+
+.home_main{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: black;
+    height: 88vh;
+    color: whitesmoke;
+
+}
+
+.home_main_image{
+    width: 400px;
+    border-radius: 10px;
+}
+
+.activity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#000000;
+    padding-bottom: 20px;
+}
+
+.activity a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+
+.row{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+
+/* loan and transactions style */
+
+
+.main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 8px;
+    background-color: #000000;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+
+.create-button {
+    padding: 5px 10px;
+    font-size: 25px;
+    text-decoration: none;
+    border: 2px solid white;
+    background: transparent;
+    color: #ffffff;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom right, #000080, #0066ff, #000080);
+    margin-bottom: 20px;
+}
+
+
+.create-button:hover {
+    box-shadow: 5px 5px 15x #0000cc;
+    background-image: linear-gradient(to bottom right, #0066ff, #0066ff, #0066ff);
+}
+
+
+.card_container{
+    height: 100%;
+}
+
+
+/* profile style */
+
+.profiles{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* height: 90vh; */
+}
+
+.profile{
+    border: 2px solid #ffffff;
+    margin: 20px;
+    width: 450px;
+    border-radius: 10px;
+    background-color: #1a292f
+}
+
+.profile-header{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-header img{
+    padding: 20px;
+    width: 150px;
+}
+
+.profile-body{
+    font-size: 20px;
+    padding: 20px;
+}
+
+
+
+
+/* Edit Forms */
+
+.create-main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 95vh;
+}
+
+.edit-main{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+
+
+.edit-form{
+    border: 2px solid #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #6600cc, #cc33ff);
+    color:#ffffff;
+    width: 800px;
+    margin-top: 20px;
+}
+
+.edit-form label{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+
+.edit-form input{ 
+    height: 35px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+.edit-form select{ 
+    height: 35px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+.delete-form{
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #6600cc, #cc33ff);
+    color:#ffffff;
+    width: 500px;
+    margin-top: 20px;
+}
+
+
+.delete-btn {
+    padding: 6px 15px;
+    font-size: 17px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dd3300;
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+
+

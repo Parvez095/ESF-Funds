@@ -1,0 +1,169 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+
+
+<div class="main">
+
+    <div class="header">
+        <h1 class="head-text">Transactions</h1>
+    </div>
+
+    
+    <div>
+    {% if user.is_superuser %} 
+        {% comment %} <h2>Welcome Abid</h2>  {% endcomment %}
+        {% comment %} <a href="{% url 'create-transaction' %}"><button class="create-button">Create Transactions</button></a> {% endcomment %}
+               
+        {% else %}
+
+        {% comment %} <h2>Welcome {{ request.user.username }}</h2> {% endcomment %}
+
+    {% endif %}
+
+
+  <div class="card_container">
+    <div class="card" style="border: 2px solid #ffffff; background-color: #00ff99; box-shadow: 5px 10px 10px #008000;">
+        <div class="card-body">
+          {% if user.is_superuser %}
+          {% comment %} <h1>Loan Details for {{ user.username }}</h1> {% endcomment %}
+          <h4 class="card-title">Here are all the Transactions</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Transaction date</th>
+                {% comment %} <th>Update</th> {% endcomment %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in transaction %}
+            <tr>
+                <td>
+                    {{x.loan}}
+                  </td>
+              <td>
+                {{x.loan.user}}
+              </td>
+              <td>
+                {{ x.transaction_amount }}
+              </td >
+              <td>
+                {{ x.transaction_time | date:"d-M-Y" }}
+              </td>
+              {% comment %} <td>
+                <a href="{% url 'view-loan-transactions' pk=x.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete-transaction' pk=x.pk %}" class="btn btn-danger">Delete</a>
+              </td> {% endcomment %}
+              {% empty %}
+              <td colspan="5" style="color: white; text-align: center;">
+                <h4>No Loans to show!<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          {% else %}
+
+          <h4 class="card-title">Here are all your Transactions</h4>
+          <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Loan ID</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for x in transaction %}
+            <tr>
+                <td>
+                    {{x.loan}}
+                  </td>
+              <td>
+                {{x.loan}}
+              </td>
+              <td>
+                {{ x.transaction_amount }}
+              </td >
+              <td>
+                {{ x.transaction_time | date:"d-M-Y" }}
+              </td>
+
+              {% empty %}
+              <td colspan="4" style="text-align: center;">
+                <h4>You don't have any transactions.<h4>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          </table>
+
+          {% endif %}
+           
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+{% comment %} <div>
+    
+    <div>
+    {% if user.is_superuser %} 
+        <h1>Welcome Abid</h1> 
+        <h3><a href="{% url 'create-transaction' %}">Create Transactions</a></h3> 
+        <ul> 
+ 
+            <a href="{% url 'update-transaction' pk=user.pk  %}">Edit</a> 
+            <a href="{% url 'update-transaction' pk=x.pk %}">Edit</a> 
+            <a href="{% url 'delete-transaction' pk=x.pk %}">Delete</a>
+            <li>{{ x.id}}</li>
+                <li>{{ x.loan.user}}</li>
+                {% for x in transaction %}
+                <li>Debit</li>
+                <li>{{ x.transaction_amount }}</li>
+                <li>{{ x.payment_mode }}</li>       
+                <li>{{ x.payment_id }}</li>
+                <li>{{ x.transaction_time }}</li>
+                <hr>
+                <br>
+
+                {% empty %}
+                <li><h4>No Loans to show!<h4></li>
+                            
+        {% endfor %}
+        </ul>
+               
+        {% else %}
+
+        
+            <h1>Welcome {{ request.user.username }}</h1>
+            <p>Here is your data:</p>
+            {% for x in transaction  %}
+            <ul>
+                <li>Credit</li>
+                <li>{{ x.transaction_type }}</li>
+                <li>{{ x.transaction_amount }}</li>
+                <li>{{ x.payment_mode }}</li>
+                <li>{{ x.payment_id }}</li>
+                <li>{{ x.transaction_time }}</li>
+                <hr>
+                {% empty %}
+                <li><h4>You don't have any active loans.<h4></li>
+            </ul>
+            <hr>
+        {% endfor %}
+    {% endif %}
+</div> {% endcomment %}
+
+{% endblock content %}

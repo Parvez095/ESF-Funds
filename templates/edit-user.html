@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="edit-main">
+    <form class="edit-form" method="POST" action="">
+        <h2>You are Editing Profile for: {{ profile.user_id }}</h2>
+        {% csrf_token %}
+        {{ form }}
+        <input type="SUBMIT" value="Submit">
+    </form>
+</div>
+
+{% endblock content %}

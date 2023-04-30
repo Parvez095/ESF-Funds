@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="edit-main">
+    <form class="edit-form" method="POST" action="">
+        <h1>You are Making Loan Repayment for the  Loan of: {{ loan.user_id }}</h1>
+        {% csrf_token %}
+        <label for="{{ form.user.id_for_label }}">User</label>
+        {{ form.user }}
+        <br/>
+        <label for="{{ form.amount.id_for_label }}">Amount:</label>
+        {{ form.amount }}
+        <br/>
+        <label for="{{ form.interest_rate.id_for_label }}">Interest Rate:</label>
+        {{ form.interest_rate }}
+        <br/>
+        <label for="{{ form.term.id_for_label }}">Term:</label>
+        {{ form.term }}
+        <br/>
+        <label for="{{ form.remaining_balance.id_for_label }}">Remaining Balance</label>
+        {{ form.remaining_balance }}
+        <br/>
+        <label for="{{ form.balance.id_for_label }}">Amount Paid for the current loan</label>
+        {{ form.balance }}
+        <br/>
+        <label for="{{ form.status.id_for_label }}">Status:</label>
+        {{ form.status }}
+        <br/>
+        <button type="submit">Create Loan</button>
+        <input type="SUBMIT" value="Submit">
+    </form>
+</div>
+
+{% endblock content %}
